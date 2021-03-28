@@ -33,7 +33,7 @@ class StartSkill(Skill):
         telegram_response_entity = make_text_response(
             telegram_request_entity=initial_message,
             message=(
-                'Это твоя новая жизнь и имя у будет тоже новое. Как звать тебя будем новичок?'
+                'Это твоя новая жизнь и имя тоже будет новое. Как звать тебя будем новичок?'
             ),
         )
         username_telegram_request: TelegramRequestEntity = self.ask(telegram_response_entity)
