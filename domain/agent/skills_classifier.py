@@ -28,7 +28,7 @@ class SkillClassifier(BaseSkillClassifier):
 
     def _has_admin_permissions(self, message: TelegramRequestEntity) -> bool:
         user_entity = self.user_dao.try_to_get_user_entity_by_user_id(user_id=message.user_id)
-        return user_entity.admin
+        return bool(user_entity and user_entity.admin)
 
     def classify(self, message: TelegramRequestEntity) -> list[Skill]:
         skills = []
