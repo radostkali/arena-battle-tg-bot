@@ -1,0 +1,11 @@
+version: '3.6'
+
+services:
+  sidorovich:
+    container_name: sidorovich
+    build: .
+    command: bash -c "python main.py"
+    volumes:
+      - .:/usr/src/app/
+    env_file:
+      - .env.dev

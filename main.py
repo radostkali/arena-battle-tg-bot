@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import logging
 
 from millet import Agent
@@ -15,14 +16,13 @@ from domain.services import WinLoseService
 
 logging.basicConfig(
     format='[%(name)s %(levelname)s] %(asctime)s: %(message)s',
-    level=logging.NOTSET,
+    level=logging.INFO,
 )
 
 database = Database(
     database_url=settings.DATABASE_URL,
     base=Base,
 )
-# database.drop_tables()
 database.create_tables()
 
 user_dao = UserDAO(database)
@@ -37,3 +37,6 @@ telegram_bot = TelegramBot(
     telegram_bot_token=settings.TELEGRAM_BOT_TOKEN,
     agent=agent,
 )
+
+if __name__ == "__main__":
+    telegram_bot.start()
