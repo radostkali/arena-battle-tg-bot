@@ -1,4 +1,4 @@
 from .rank_choices import RankChoices
-from .telegram_request_entity import TelegramRequestEntity
-from .telegram_response_entity import TelegramResponseEntity
+from .request_entity import RequestEntity
+from .response_entity import ResponseEntity
 from .user_entity import UserEntity

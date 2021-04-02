@@ -3,7 +3,7 @@ from typing import Optional
 
 
 @dataclass
-class TelegramResponseEntity:
+class ResponseEntity:
     chat_id: int
     user_id: int
     text: str

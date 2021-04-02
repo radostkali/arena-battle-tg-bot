@@ -1,5 +1,5 @@
 import constants
-from domain.entities import TelegramRequestEntity, TelegramResponseEntity
+from domain.entities import RequestEntity, ResponseEntity
 
 
 def get_html_commands_description() -> str:
@@ -13,23 +13,23 @@ def get_html_commands_description() -> str:
 
 
 def make_text_response(
-        telegram_request_entity: TelegramRequestEntity,
+        request_entity: RequestEntity,
         message: str,
-) -> TelegramResponseEntity:
-    return TelegramResponseEntity(
-        chat_id=telegram_request_entity.chat_id,
-        user_id=telegram_request_entity.user_id,
+) -> ResponseEntity:
+    return ResponseEntity(
+        chat_id=request_entity.chat_id,
+        user_id=request_entity.user_id,
         text=message,
     )
 
 
 def make_html_response(
-        telegram_request_entity: TelegramRequestEntity,
+        request_entity: RequestEntity,
         message: str,
-) -> TelegramResponseEntity:
-    return TelegramResponseEntity(
-        chat_id=telegram_request_entity.chat_id,
-        user_id=telegram_request_entity.user_id,
+) -> ResponseEntity:
+    return ResponseEntity(
+        chat_id=request_entity.chat_id,
+        user_id=request_entity.user_id,
         text=message,
         parse_mode='HTML',
     )

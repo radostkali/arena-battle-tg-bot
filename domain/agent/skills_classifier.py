@@ -3,7 +3,7 @@ from millet.agent import BaseSkillClassifier
 
 import constants
 
-from domain.entities import TelegramRequestEntity
+from domain.entities import RequestEntity
 from domain.interfaces import IUserDAO
 from domain.agent.skills import (
     HelpSkill,
@@ -26,11 +26,11 @@ class SkillClassifier(BaseSkillClassifier):
         self.win_lose_service = win_lose_service
         self.user_dao = user_dao
 
-    def _has_admin_permissions(self, message: TelegramRequestEntity) -> bool:
+    def _has_admin_permissions(self, message: RequestEntity) -> bool:
         user_entity = self.user_dao.try_to_get_user_entity_by_user_id(user_id=message.user_id)
         return bool(user_entity and user_entity.admin)
 
-    def classify(self, message: TelegramRequestEntity) -> list[Skill]:
+    def classify(self, message: RequestEntity) -> list[Skill]:
         skills = []
 
         if message.message == f'/{constants.TELEGRAM_COMMAND_START}':

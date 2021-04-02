@@ -1,6 +1,6 @@
 from millet import Skill
 
-from domain.entities import TelegramRequestEntity, UserEntity
+from domain.entities import RequestEntity, UserEntity
 from domain.interfaces import IUserDAO
 from domain.agent.skills.common import (
     make_html_response,
@@ -26,14 +26,14 @@ class TableSkill(Skill):
             )
         return '\n'.join(user_info_line_list)
 
-    def start(self, initial_message: TelegramRequestEntity):
+    def start(self, initial_message: RequestEntity):
         users_entities = self.user_dao.fetch_users_usernames()
         users_info = self._get_users_info_list_message(users_entities=users_entities)
-        telegram_response_entity = make_html_response(
-            telegram_request_entity=initial_message,
+        response_entity = make_html_response(
+            request_entity=initial_message,
             message=(
                 f'Вот последние списки мясников с арены:\n'
                 f'{users_info}'
             ),
         )
-        self.finish(telegram_response_entity)
+        self.finish(response_entity)
