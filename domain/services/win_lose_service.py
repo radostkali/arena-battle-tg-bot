@@ -9,10 +9,10 @@ class WinLoseService:
         self.user_dao = user_dao
 
     def _calc_rank_by_rate(self, target_rate: int) -> RankChoices:
-        target_rank = RankChoices[RATE_RANK_MAP[0][1]]
+        target_rank = RATE_RANK_MAP[0][1]
         for rate, rank in RATE_RANK_MAP:
             if target_rate >= rate:
-                target_rank = RankChoices[rank]
+                target_rank = rank
 
         return target_rank
 
